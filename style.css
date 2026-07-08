@@ -1,0 +1,403 @@
+/*
+GUN SPINNER
+FULL STYLE SHEET
+*/
+
+
+:root {
+
+    --tier-color: #808080;
+
+}
+
+
+
+* {
+
+    box-sizing: border-box;
+
+    font-family: Arial, sans-serif;
+
+}
+
+
+
+body {
+
+    margin: 0;
+
+    height: 100vh;
+
+    background: #050505;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: white;
+
+}
+
+
+
+/* Main Container */
+
+.container {
+
+    width: 900px;
+
+    min-height: 600px;
+
+    background: #0b0b0b;
+
+    border: 2px solid var(--tier-color);
+
+    border-radius: 15px;
+
+    padding: 30px;
+
+    overflow: hidden;
+
+    box-shadow:
+
+    0 0 25px var(--tier-color);
+
+    position: relative;
+
+}
+
+
+
+/* Title */
+
+.title {
+
+    text-align: center;
+
+    font-size: 38px;
+
+    font-weight: bold;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 25px;
+
+}
+
+
+
+/* Tier Buttons */
+
+.tiers {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-bottom: 30px;
+
+}
+
+
+
+.tier-btn {
+
+    padding: 12px 25px;
+
+    background: #111;
+
+    color: white;
+
+    border: 1px solid #333;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+
+
+.tier-btn:hover,
+
+.tier-btn.active {
+
+    border-color: var(--tier-color);
+
+    box-shadow:
+
+    0 0 15px var(--tier-color);
+
+}
+
+
+
+/* Spinner Pointer */
+
+.pointer {
+
+    width: 0;
+
+    height: 0;
+
+    margin: auto;
+
+    border-left: 15px solid transparent;
+
+    border-right: 15px solid transparent;
+
+    border-bottom: 25px solid var(--tier-color);
+
+}
+
+
+
+/* Spinner Box */
+
+.spinner-box {
+
+    height: 180px;
+
+    background: black;
+
+    border: 2px solid var(--tier-color);
+
+    border-radius: 12px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-top: 10px;
+
+}
+
+
+
+/* Gun Text */
+
+#spinner {
+
+    font-size: 32px;
+
+    font-weight: bold;
+
+    text-align: center;
+
+}
+
+
+
+/* Spin Animation */
+
+.spinning {
+
+    animation: spinEffect .1s infinite;
+
+}
+
+
+
+@keyframes spinEffect {
+
+
+    0% {
+
+        transform: translateY(-5px);
+
+    }
+
+
+    50% {
+
+        transform: translateY(5px);
+
+    }
+
+
+    100% {
+
+        transform: translateY(-5px);
+
+    }
+
+}
+
+
+
+/* Spin Button */
+
+#spin {
+
+    margin-top: 25px;
+
+    width: 100%;
+
+    padding: 15px;
+
+    background: #111;
+
+    color: white;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    border-radius: 10px;
+
+    border: 2px solid var(--tier-color);
+
+    cursor: pointer;
+
+    box-shadow:
+
+    0 0 15px var(--tier-color);
+
+}
+
+
+
+#spin:hover {
+
+    transform: scale(1.05);
+
+}
+
+
+
+/* Weapon Card */
+
+.weapon-card {
+
+    margin-top: 25px;
+
+    padding: 20px;
+
+    background: #111;
+
+    border: 2px solid var(--tier-color);
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    animation: pulseGlow 2s infinite;
+
+}
+
+
+
+.weapon-name {
+
+    font-size: 30px;
+
+    font-weight: bold;
+
+}
+
+
+
+.weapon-type {
+
+    margin-top: 8px;
+
+    color: #aaa;
+
+    font-size: 18px;
+
+}
+
+
+
+/* Rarity Bar */
+
+.rarity-bar {
+
+    height: 10px;
+
+    width: 100%;
+
+    background: #222;
+
+    border-radius: 10px;
+
+    margin-top: 15px;
+
+    overflow: hidden;
+
+}
+
+
+
+.rarity-fill {
+
+    height: 100%;
+
+    width: 100%;
+
+    background: var(--tier-color);
+
+    box-shadow:
+
+    0 0 15px var(--tier-color);
+
+}
+
+
+
+/* Result Text */
+
+#result {
+
+    margin-top: 20px;
+
+    text-align: center;
+
+    font-size: 24px;
+
+    color: var(--tier-color);
+
+}
+
+
+
+/* Glow Animation */
+
+@keyframes pulseGlow {
+
+
+    0% {
+
+        box-shadow:
+
+        0 0 10px var(--tier-color);
+
+    }
+
+
+    50% {
+
+        box-shadow:
+
+        0 0 30px var(--tier-color);
+
+    }
+
+
+    100% {
+
+        box-shadow:
+
+        0 0 10px var(--tier-color);
+
+    }
+
+}
