@@ -76,7 +76,7 @@ const spinAmount = {
 
     "Tier 1.5": 5,
 
-    "Tier 2": 6
+    "Tier 2": 6,
 
 };
 
