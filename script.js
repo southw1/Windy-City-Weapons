@@ -1,11 +1,10 @@
 /*
-GUN SPINNER
-FULL SCRIPT
+WINDY CITY WEAPON STATS
+WEAPON SYSTEM
 */
 
 
 const guns = {
-
 
     "Tier 0": [
 
@@ -21,7 +20,6 @@ const guns = {
     ],
 
 
-
     "Tier 1": [
 
         "Pistol - Beretta",
@@ -34,7 +32,6 @@ const guns = {
         "Ceramic Pistol - SigP230"
 
     ],
-
 
 
     "Tier 1.5": [
@@ -52,7 +49,6 @@ const guns = {
     ],
 
 
-
     "Tier 2": [
 
         "Carbine Rifle - 300 Blackout",
@@ -66,6 +62,43 @@ const guns = {
     ]
 
 };
+
+
+
+
+// Amount of guns allowed in each spin pool
+
+const spinAmount = {
+
+    "Tier 0": 2,
+
+    "Tier 1": 4,
+
+    "Tier 1.5": 5,
+
+    "Tier 2": 6
+
+};
+
+
+
+
+// Creates temporary spin pool
+
+function getSpinPool(tier) {
+
+    let allGuns = [...guns[tier]];
+
+
+    allGuns.sort(() => Math.random() - 0.5);
+
+
+    return allGuns.slice(
+        0,
+        spinAmount[tier]
+    );
+
+}
 
 
 
@@ -92,15 +125,7 @@ const weaponName = document.querySelector("#weaponName");
 
 function updateTierColor() {
 
-
-    let color;
-
-
-    if (selectedTier === "Tier 0") {
-
-        color = "#808080";
-
-    }
+    let color = "#808080";
 
 
     if (selectedTier === "Tier 1") {
@@ -156,7 +181,6 @@ tierButtons.forEach(button => {
 
         weaponName.textContent = "No Drop";
 
-
         resultText.textContent = "Ready to spin...";
 
 
@@ -177,40 +201,29 @@ tierButtons.forEach(button => {
 
 function saveDrop(gun) {
 
-
     localStorage.setItem(
-
         "lastDrop",
-
         gun
-
     );
-
 
 }
 
 
 
 
-
-// Load Drop
+// Load Last Drop
 
 function loadDrop() {
-
 
     const saved = localStorage.getItem("lastDrop");
 
 
     if(saved) {
 
-
         resultText.textContent =
-
         `Last Drop: ${saved}`;
 
-
     }
-
 
 }
 
@@ -218,18 +231,15 @@ function loadDrop() {
 
 
 
-// Spin Function
+// Spin System
 
 spinButton.addEventListener("click", () => {
 
 
-
-    const weaponList = guns[selectedTier];
-
+    const weaponList = getSpinPool(selectedTier);
 
 
     let count = 0;
-
 
 
     spinnerText.classList.add("spinning");
@@ -239,19 +249,15 @@ spinButton.addEventListener("click", () => {
     const spin = setInterval(() => {
 
 
-
         const randomGun =
-
         weaponList[
-
-        Math.floor(Math.random() * weaponList.length)
-
+            Math.floor(
+                Math.random() * weaponList.length
+            )
         ];
 
 
-
         spinnerText.textContent = randomGun;
-
 
 
         count++;
@@ -261,9 +267,7 @@ spinButton.addEventListener("click", () => {
         if(count >= 35) {
 
 
-
             clearInterval(spin);
-
 
 
             spinnerText.classList.remove("spinning");
@@ -271,11 +275,10 @@ spinButton.addEventListener("click", () => {
 
 
             const finalGun =
-
             weaponList[
-
-            Math.floor(Math.random() * weaponList.length)
-
+                Math.floor(
+                    Math.random() * weaponList.length
+                )
             ];
 
 
@@ -283,19 +286,14 @@ spinButton.addEventListener("click", () => {
             spinnerText.textContent = finalGun;
 
 
-
             resultText.textContent =
-
             `Your Drop: ${finalGun}`;
-
 
 
             weaponName.textContent = finalGun;
 
 
-
             saveDrop(finalGun);
-
 
 
         }
@@ -305,15 +303,11 @@ spinButton.addEventListener("click", () => {
     }, 80);
 
 
-
 });
 
 
 
 
-
-
-// Start
 
 updateTierColor();
 
